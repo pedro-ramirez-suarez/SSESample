@@ -30,12 +30,12 @@
 
             var source = new EventSource('SSEHandler.cspx');
             source.addEventListener("open", function (event) {
-                $('#state').html('<b>Connection Open</b>');
+                $('#state').html('<b style="color:green;">Connection Open</b>');
             }, false);
 
             source.addEventListener("error", function (event) {
                 if (event.eventPhase == EventSource.CLOSED) {
-                    $('#state').append('<b>Connection Closed</b>');
+                    $('#state').html('<b style="color:red;">Connection Closed</b><br><span style="color:goldenrod;">Reconecting....</span>');
                 }
             }, false);
 

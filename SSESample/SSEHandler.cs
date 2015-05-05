@@ -25,7 +25,7 @@ namespace SSESample
             DateTime startDate = DateTime.Now;
             Response.ContentType = "text/event-stream";
             //this only works for 1 minute
-            while (startDate.AddMinutes(1) > DateTime.Now)
+            while (startDate.AddSeconds(20) > DateTime.Now)
             {
                 var rnd = new Random();
                 //Send a color
@@ -38,7 +38,7 @@ namespace SSESample
                 
                 System.Threading.Thread.Sleep(1000);
             }
-            //do not close response if you want to receive updates forever
+            //Even that the response is closed, SSE provides auto reconnect so the handler is requested again automatically
             Response.Close();
         }
 
